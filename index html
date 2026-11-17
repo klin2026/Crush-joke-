@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>စမ်းသပ်ချက်လေးတစ်ခု… 😏</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-width: 380px;
+            width: 90%;
+        }
+        h1 {
+            color: #1d4ed8;
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+        p {
+            color: #2f3542;
+            font-size: 15px;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        input[type="text"] {
+            width: 85%;
+            padding: 10px 15px;
+            font-size: 15px;
+            border: 2px solid #dfe4ea;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            text-align: center;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #1d4ed8;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #btn1 {
+            background-color: #1d4ed8;
+            color: white;
+        }
+        #btn2 {
+            background-color: #f1f2f6;
+            color: #2f3542;
+        }
+        .couple-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 4px solid #1d4ed8;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="card">
+        <h1 id="title">မေးခွန်း (၁) 🧐</h1>
+        <p id="text">မင်းနာမည် ဘယ်လိုခေါ်လဲ?</p>
+        
+        <div id="inputArea">
+            <input type="text" id="nameInput" placeholder="ဒီမှာ နာမည်ရိုက်ထည့်ပါ...">
+        </div>
+        
+        <div class="buttons" id="btnGroup">
+            <button id="btn1" onclick="checkName()">ဖြေမယ် 👉</button>
+        </div>
+    </div>
+
+    <script>
+        function checkName() {
+            const nameInput = document.getElementById("nameInput").value.trim();
+            if (nameInput === "") {
+                alert("နာမည်လေးတော့ အရင်ရိုက်ထည့်ဦးလေကွာ 😜");
+                return;
+            }
+            document.getElementById("inputArea").innerHTML = "";
+            nextStep(2);
+        }
+
+        function nextStep(step) {
+            const title = document.getElementById("title");
+            const text = document.getElementById("text");
+            const btnGroup = document.getElementById("btnGroup");
+
+            if (step === 2) {
+                title.innerHTML = "ဟားဟား မိပြီ 😂";
+                text.innerHTML = "သိသားပဲ… မင်းနာမည် ချစ်ဖြိုးနိုင်ဆိုတာ သိရဲ့နဲ့ မေးတာ 😂";
+                btnGroup.innerHTML = `<button id="btn1" onclick="nextStep(3)">ဆက်မေးမယ် 👉</button>`;
+            } 
+            else if (step === 3) {
+                title.innerHTML = "သစ္စာစမ်းသပ်ချက် 🤝";
+                text.innerHTML = "မင်း ငါ့ကို ခင်လား?";
+                btnGroup.innerHTML = `
+                    <button id="btn1" onclick="nextStep(4)">ခင်တယ်</button>
+                    <button id="btn2" onclick="nextStep(4)">မခင်ဘူး</button>
+                `;
+            }
+            else if (step === 4) {
+                title.innerHTML = "ဟာနော်! 🤨";
+                text.innerHTML = "ဘာ… မင်းငါ့ကို မခင်ဘူး ဟုတ်လား၊ သေချာလား?";
+                btnGroup.innerHTML = `
+                    <button id="btn1" onclick="nextStep(5)">ခင်တယ်</button>
+                `;
+            }
+            else if (step === 5) {
+                title.innerHTML = "ရင်နာရပါပြီ 🥹";
+                text.innerHTML = "ဟျောင့်… မင်း ရက်စက်တယ်ကွာ၊ ငါကတော့ ခင်လိုက်ရတာ 🥹";
+                btnGroup.innerHTML = `
+                    <button id="btn1" onclick="nextStep(6)">ခင်တယ်</button>
+                `;
+            }
+            else if (step === 6) {
+                title.innerHTML = "နောက်ဆုံး စမ်းသပ်ချက် ✨";
+                text.innerHTML = "ရပါပြီကွာ… ဒီလောက်‌ဆို ခံစားရဖို့ လုံလောက်ပါပြီ။ ကဲ… နောက်ဆုံးတစ်ခု ပြမယ်…";
+                btnGroup.innerHTML = `<button id="btn1" onclick="nextStep(7)">ဘာလဲ ပြောလေ 👀</button>`;
+            }
+            else if (step === 7) {
+                title.innerHTML = "နောက်ဆုံး အဖြေ ✌️";
+                text.innerHTML = "ဘယ်လိုပဲ ညှဉ်းပန်းနှိပ်စက်နေပါစေ… အကောင်းဆုံး သူငယ်ချင်းဆိုတာ မမေ့ဘူးနော်! ကဲ… ဒီပုံလေးကို ကြည့်လိုက်ဦး ဟီးဟီး 😎";
+                btnGroup.innerHTML = `<button id="btn1" onclick="nextStep(8)">ပုံကြည့်မယ် 📸</button>`;
+            }
+            else if (step === 8) {
+                title.innerHTML = "FOREVER BESTIES 👊";
+                text.innerHTML = "အမြဲတမ်း ဒီလိုပဲ ပျော်ပျော်ရွှင်ရွှင်နဲ့ သူငယ်ချင်းတွေလိုပဲ ဆက်ရှိနေရအောင်နော်! ✨";
+                
+                IMG_20260509_234748_519.jpg
+                document.getElementById("card").innerHTML = `
+                    <h1 style="color: #1d4ed8;">FOREVER BESTIES 👊</h1>
+                    <img src="YOUR_IMAGE_LINK_HERE.jpg" alt="Besties Photo" class="couple-img">
+                    <p>အမြဲတမ်း ဒီလိုပဲ ပျော်ပျော်ရွှင်ရွှင်နဲ့ အတူတူ ရှိနေရအောင်နော်! ဟီးဟီး 😎</p>
+                    <div class="buttons">
+                        <button id="btn1" onclick="location.reload()">အစကနေ ပြန်စမယ် 🔄</button>
+                    </div>
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>
